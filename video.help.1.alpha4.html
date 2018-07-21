@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Helper</title>
+	</head>
+	<body>
+		<center><h1> Helper </h1></center>
+		
+        <section id="ffc">
+<!--		<form id="ffmpeg-cutter-form" name="ffmpeg-cutter-form" action="javacript:void(null);">-->
+
+			<h2>ffmpeg cutter</h2>	
+	
+			<p id="ffc-template"> ffmpeg -ss @start -i @file_in  -t @duration -vcodec copy -acodec copy @file_out</p>
+
+			<p><label>file_in</label >
+			<input id="ffc-file-in" name="ffc-file-in" size="100" type="text"></p>
+			
+			<p><label>start</label>
+			<input id="ffc-in-hour" size="10" name="ffc-in-hour" type="text" value=0>
+			<input id="ffc-in-min"  size="10" name="ffc-in-min" type="text" value=0>
+			<input id="ffc-in-seg"  size="10" name="ffc-in-seg" type="text" value=0></p>
+			
+			<p><label>finish</label>
+			<input id="ffc-out-hour" size="10" name="ffc-out-hour" type="text" value=0>
+			<input id="ffc-out-min"  size="10" name="ffc-out-min" type="text" value=0>
+			<input id="ffc-out-seg"  size="10" name="ffc-out-seg" type="text" value=0></p>
+
+			<p><input id="ffc-pro" name= "ffc-pro" type="button" value="Genera" size="200" onclick="ffcprocesa()" ></input>
+			</p>
+			<p ><label>Comando</label></p>
+			<!--<input id="ffc-file-out" name="ffc-file-out" size="100" type="text"></p>-->
+
+			<p id="ffc-file-out" name="ffc-file-out" size="100" type="text"></p>
+		</section>			
+	</body>
+
+<script type="text/javascript">
+	function ffcprocesa() {
+		var _ffc_file_out ; // nodo de resultado
+
+		var hora_in ; // hora de entrada
+		var min_in  ; // minuto de entrada
+		var seg_in  ; // segundo de entrada
+
+		var hora_out ; // hora de salida
+		var min_out  ; // minuto de salida
+		var seg_out  ; // segundo de salida
+
+		var segs_in  ; // segundos de entrada
+		var segs_out ; // segundos de entrada
+        var $duration; // duracion del corte
+
+		var $template ; //plantilla de comando
+		var $file_in  ; //nombre de archivo por convertir
+        var $file_out ; //nombre de archivo destino
+		var $command  = "" ; //comando de conversion
+        
+        var $pos    ; // "el punto de la extension " 
+        
+
+		//obtencion de punto inicial
+		hora_in =  document.getElementById("ffc-in-hour").value;
+		min_in  =  document.getElementById("ffc-in-min").value;
+		seg_in  =  document.getElementById("ffc-in-seg").value;
+
+		//obtencion de punto final 
+		hora_out =  document.getElementById("ffc-out-hour").value;
+		min_out  =  document.getElementById("ffc-out-min").value;
+		seg_out  =  document.getElementById("ffc-out-seg").value;
+
+
+		//comando plantilla
+		$template =  document.getElementById("ffc-template").innerText;
+
+		//nombre de archivo de entrada
+		$file_in =  document.getElementById("ffc-file-in").value;
+
+		/* Procedimiento de Calculo de Inicio y de Fin */
+
+		segs_in  = (hora_in*3600)  + (min_in*60) + (seg_in*1) ; 
+		segs_out = (hora_out*3600) + (min_out*60) + (seg_out*1) ; 
+        $duration = segs_out - segs_in ; 
+
+        // Generacion del archivo 
+        $pos = $file_in.lastIndexOf(".") ; 
+        
+        $file_out = $file_in.substring(0,$pos) + ".ffc" + $file_in.substring($pos,$file_in.length)
+        
+
+		//Generacion de comando de salida
+		//$command = String($template); 
+        $command = $template;
+
+		$command = $command.replace("@file_in",'"'+$file_in+'"') ;
+        $command = $command.replace("@start", segs_in) ;
+        $command = $command.replace("@duration", $duration) ;
+        $command = $command.replace("@file_out", '"'+$file_out +'"') ;
+        
+        
+//        console.log("posicion -->" + $file_out ) ;
+
+
+		//var _ffc_in_min ; // nodo de hora de entrada
+
+		 //_ffc_file_out = document.getElementById("ffc-file-out");
+		 
+		 //Una Forma 
+/*		document.getElementById("ffc-file-out").innerText = "Desde " + segs_in + " Hasta " + segs_out ; */
+
+		document.getElementById("ffc-file-out").innerText = $command ; 
+
+	}
+
+</script>
+
+
+
+
+
+</html>

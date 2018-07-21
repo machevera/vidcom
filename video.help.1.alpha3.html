@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title> Helper</title>
+	</head>
+	<body>
+		<center><h1> Helper </h1></center>
+		<h2>ffmpeg cutter
+		</h2>
+			<p id="ffc-comando"> ffmpeg -ss @start -i @file_in  -t @duration -vcodec copy -acodec copy @file_out"</p>
+		<form id="ffmpeg-cutter-form" name="ffmpeg-cutter-form" action="javacript:void(null);">
+			
+			<p><label>Archivo</label >
+			<input id="ffc-file-in" name="ffc-file-in" size="100" type="text"></p>
+			
+			<p><label>Inicio</label>
+			<input id="ffc-in-hour" size="10" name="ffc-in-hour" type="text" value=0>
+			<input id="ffc-in-min"  size="10" name="ffc-in-min" type="text" value=0>
+			<input id="ffc-in-seg"  size="10" name="ffc-in-seg" type="text" value=0></p>
+			
+			<p><label>Fin</label>
+			<input id="ffc-out-hour" size="10" name="ffc-out-hour" type="text" value=0>
+			<input id="ffc-out-min"  size="10" name="ffc-out-min" type="text" value=0>
+			<input id="ffc-out-seg"  size="10" name="ffc-out-seg" type="text" value=0></p>
+
+			<p><input id="ffc-pro" name= "ffc-pro" type="button" value="Genera" size="200" onclick="ffcprocesa()" ></input>
+			</p>
+			<p ><label>Comando</label></p>
+			<!--<input id="ffc-file-out" name="ffc-file-out" size="100" type="text"></p>-->
+			<p id="ffc-file-out" name="ffc-file-out" size="100" type="text"></p>
+
+		</form>
+	</body>
+
+<script type="text/javascript">
+	function ffcprocesa() {
+		var _ffc_file_out ; // nodo de resultado
+
+		var hora_in ; // hora de entrada
+		var min_in  ; // minuto de entrada
+		var seg_in  ; // segundo de entrada
+
+		var hora_out ; // hora de salida
+		var min_out  ; // minuto de salida
+		var seg_out  ; // segundo de salida
+
+		var segs_in  ; //segundos de entrada
+		var segs_out ; //segundos de entrada
+
+
+		hora_in =  document.getElementById("ffc-in-hour").value;
+		min_in  =  document.getElementById("ffc-in-min").value;
+		seg_in  =  document.getElementById("ffc-in-seg").value;
+
+		hora_out =  document.getElementById("ffc-out-hour").value;
+		min_out  =  document.getElementById("ffc-out-min").value;
+		seg_out  =  document.getElementById("ffc-out-seg").value;
+
+
+		segs_in  = (hora_in*3600)  + (min_in*60) + (seg_in*1) ; 
+		segs_out = (hora_out*3600) + (min_out*60) + (seg_out*1) ; 
+
+//console.log(segs_in)
+
+		//var _ffc_in_min ; // nodo de hora de entrada
+
+		 //_ffc_file_out = document.getElementById("ffc-file-out");
+		 
+		 //Una Forma 
+		document.getElementById("ffc-file-out").innerText = "Desde " + segs_in + " Hasta " + segs_out ;
+
+	}
+
+</script>
+
+
+
+
+
+</html>
