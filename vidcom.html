@@ -22,19 +22,15 @@
                 <input id="ffc-out-min"  size="10" name="ffc-out-min" type="text" placeholder="Out Min" class="input-30" required>
                 <input id="ffc-out-seg"  size="10" name="ffc-out-seg" type="text" placeholder="Out Seg" class="input-30" required>
 
-                <input id="ffc-pro" name= "ffc-pro" type="button" value="Genera" size="200" onclick="ffcprocesa()" class="button-proccess"/>
+                <input id="ffc-pro" name= "ffc-pro" type="button" value="Genera" onclick="ffcprocesa()" class="button-proccess"/>
 
-                <input id="ffc-file-out" name="ffc-file-out" type="text" placeholder="Command" class="output-100">        
-        
+                <textarea id="ffc-command" name="ffc-command" type="text" placeholder="Command" class="text-100"></textarea>
+                
+                <input id="ffc-new" name= "ffc-new" type="button" value="Nuevo" onclick="ffcnew()" class="button-proccess"/>
             </div>       
                    
         </div>                   
                    
-            		
-		<div id="mkv-extra" class="seccion">
-		    <h2>MKV Subtitle Extract </h2>
-		</div>
-	</body>
 
 <script type="text/javascript">
 	function ffcprocesa() {
@@ -91,23 +87,43 @@
 
 		//Generacion de comando de salida
 		//$command = String($template); 
-        $command = $template;
+        $command_text = $template;
 
-		$command = $command.replace("@file_in",'"'+$file_in+'"') ;
-        $command = $command.replace("@start", segs_in) ;
-        $command = $command.replace("@duration", $duration) ;
-        $command = $command.replace("@file_out", '"'+$file_out +'"') ;
+		$command_text = $command_text.replace("@file_in",'"'+$file_in+'"') ;
+        $command_text = $command_text.replace("@start", segs_in) ;
+        $command_text = $command_text.replace("@duration", $duration) ;
+        $command_text = $command_text.replace("@file_out", '"'+$file_out +'"') ;
         
         
 //        console.log("posicion -->" + $file_out ) ;
-
-		document.getElementById("ffc-file-out").value = $command ; 
+        var $idcommand = document.getElementById("ffc-command") ; 
+		$idcommand.value = $command_text ; 
+        $idcommand.select();
 
 	}
 
+    function ffcnew(){
+
+        document.getElementById("ffc-ini-hour").value= "";
+		document.getElementById("ffc-ini-hour").value= "";
+		document.getElementById("ffc-ini-min").value = "";
+		document.getElementById("ffc-ini-seg").value = "";
+		document.getElementById("ffc-out-hour").value= "";
+		document.getElementById("ffc-out-min").value = "";
+		document.getElementById("ffc-out-seg").value = "";
+		document.getElementById("ffc-command").value = "";        
+        document.getElementById("ffc-file-in").value = "";        
+        document.getElementById("ffc-file-in").focus();
+        
+    }
+    
 </script>
 
 
+    <div id="mkv-extra" class="seccion">
+		    <h2>MKV Subtitle Extract </h2>
+		</div>
+	</body>
 
 
 

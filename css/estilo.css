@@ -3,6 +3,7 @@
     box-sizing: border-box;
     padding: 0px ;
     margin: 0px;
+    font-family: "Open Sans", Calibri, sans-serif;
 }
 
 body {
@@ -15,7 +16,6 @@ h1  {
     color: white;
     margin: 2px;
     font-weight: lighter;
-    font-family: Calibri, sans-serif;
     text-align: center;
 } 
 
@@ -36,7 +36,6 @@ h1  {
     border: 0px ;
     #margin: 2px ;
     font-weight: lighter;
-    font-family: Calibri, sans-serif;
     text-align: center ;
     background: #0a0f0f;
     #border-radius: 10px;
@@ -51,7 +50,6 @@ h1  {
     border: 0px ;
     margin: 2px ;
     font-weight: lighter;
-    font-family: Calibri, sans-serif;
     font-size: 14px;
     text-align: center ;
 }
@@ -66,13 +64,12 @@ h1  {
     justify-content: space-between;    
 }
 
-.inputs-container input {
+.inputs-container * {
     margin-bottom: 15px; 
-    padding: 15px; 
+    padding: 10px; 
     font-size: auto;
     border-radius: 1px;
     border: 1px solid darkgray;
-    font-family: Calibri,sans-serif;
 }
 
 .template {
@@ -89,11 +86,14 @@ h1  {
     width: 30%;
 }
 
-.output-100 {
+.text-100 {
     width: 100%; 
 
 }
 
 .button-proccess   {
     width: 100%;
+    font-size: 1em;
+    font-weight: lighter
+        ;
 }
