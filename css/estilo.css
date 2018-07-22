@@ -1,40 +1,99 @@
 * {
     
+    box-sizing: border-box;
     padding: 0px ;
     margin: 0px;
+}
+
+body {
+    font-family: sans-serif;
+    background: #537979;
     
 }
 
-
 h1  { 
-    color: red ;
+    color: white;
     margin: 2px;
     font-weight: lighter;
-    font-family: Calibri, sans-serif;    
+    font-family: Calibri, sans-serif;
+    text-align: center;
 } 
 
 .seccion {
+    width: 95%;
+    max-width: 1000px; 
+    margin: auto;
+    background: white;
+    border-radius: 10px;
+    #padding: 20px;
+    margin-bottom: 10px;
     
 }
-
 
 .seccion h2 {
     color: green ;
-    padding: 0px 0px 0px 0px;
+    padding: 20px;
+    border: 0px ;
+    #margin: 2px ;
+    font-weight: lighter;
+    font-family: Calibri, sans-serif;
+    text-align: center ;
+    background: #0a0f0f;
+    #border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    #border-bottom: 1px solid crimson;
+}
+
+.seccion h3 {
+    color:darkgoldenrod ;
+    padding: 5px;
     border: 0px ;
     margin: 2px ;
     font-weight: lighter;
-    font-family: Calibri, sadns-serif;
+    font-family: Calibri, sans-serif;
+    font-size: 14px;
+    text-align: center ;
 }
 
-.seccion-d {
+
+.inputs-container{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px 30px ; #10 hacia arriba y 30 alos costados 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;    
+}
+
+.inputs-container input {
+    margin-bottom: 15px; 
+    padding: 15px; 
+    font-size: auto;
+    border-radius: 1px;
+    border: 1px solid darkgray;
+    font-family: Calibri,sans-serif;
+}
+
+.template {
+    width: 100%;
+    font-weight: bolder;
     
 }
 
-.seccion-d p {color:gray;
+.input-100 {
+    width: 100%;
+}
+
+.input-30 {
+    width: 30%;
+}
+
+.output-100 {
+    width: 100%; 
 
 }
 
-.seccion-p p {color:gray;}
-
-.seccion-o p {color:gray;}
+.button-proccess   {
+    width: 100%;
+}

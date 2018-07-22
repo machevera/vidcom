@@ -2,59 +2,38 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Helper</title>
+		<title>VIDeo COMmander </title>
 		<link rel="stylesheet" href="css/estilo.css">
 	</head>
 	<body>
-		<center><h1> Helper </h1></center>
-		
-        <section id="ffc" class="seccion">
-<!--		<form id="ffmpeg-cutter-form" name="ffmpeg-cutter-form" action="javacript:void(null);">-->
+		<h1> VIDeo COMmander </h1>
+		<div class="seccion">
+			<h2>FFmpeg Cutter - Cortar videos</h2>	
+            <div class="inputs-container">
+                <input id="ffc-template" value= "ffmpeg -ss @start -i @file_in  -t @duration -vcodec copy -acodec copy @file_out" class="template">
 
-			<h2>ffmpeg cutter</h2>	
+                <input id="ffc-file-in" name="ffc-file-in"  type="text" placeholder="Input File" class="input-100" required>
 			
-			<section id="ffc-d" class="seccion-d">
-			<p >Descripción </p>
-			<pre >Cortar videos usando <i>ffmpeg</i> </pre>
-	
-			<p > Plantilla Comando </p>
-			<pre id="ffc-template"> ffmpeg -ss @start -i @file_in  -t @duration -vcodec copy -acodec copy @file_out</pre>
+                <input id="ffc-ini-hour" size="10" name="ffc-in-hour" type="text" placeholder= "Ini Hour" class="input-30" required>
+                <input id="ffc-ini-min"  size="10" name="ffc-in-min" type="text" placeholder="Ini Min" class="input-30" required>
+                <input id="ffc-ini-seg"  size="10" name="ffc-in-seg" type="text" placeholder="Ini Seg" class="input-30" required>
 
-            </section>
-           
-            <section id="ffc-p" class="seccion-p">
-            <p>Parámetros</p>
-			<label>file_in</label>
-			<input id="ffc-file-in" name="ffc-file-in" size="100" type="text"><br>
-			
-			<label>start</label>
-			<input id="ffc-in-hour" size="10" name="ffc-in-hour" type="text" value=0>
-			<input id="ffc-in-min"  size="10" name="ffc-in-min" type="text" value=0>
-			<input id="ffc-in-seg"  size="10" name="ffc-in-seg" type="text" value=0><br>
-			
-			<label>finish</label>
-			<input id="ffc-out-hour" size="10" name="ffc-out-hour" type="text" value=0>
-			<input id="ffc-out-min"  size="10" name="ffc-out-min" type="text" value=0>
-			<input id="ffc-out-seg"  size="10" name="ffc-out-seg" type="text" value=0><br>
+                <input id="ffc-out-hour" size="10" name="ffc-out-hour" type="text" placeholder="Out Hour" class="input-30" required>
+                <input id="ffc-out-min"  size="10" name="ffc-out-min" type="text" placeholder="Out Min" class="input-30" required>
+                <input id="ffc-out-seg"  size="10" name="ffc-out-seg" type="text" placeholder="Out Seg" class="input-30" required>
 
-            </section>
-            
-            <section id="ffc-p" class="seccion-o">
-            
-			<p><input id="ffc-pro" name= "ffc-pro" type="button" value="Genera" size="200" onclick="ffcprocesa()" ></input>
-			</p>
-			
-			<p ><label>Comando Generado</label></p>
-			<!--<input id="ffc-file-out" name="ffc-file-out" size="100" type="text"></p>-->
+                <input id="ffc-pro" name= "ffc-pro" type="button" value="Genera" size="200" onclick="ffcprocesa()" class="button-proccess"/>
 
-			<pre id="ffc-file-out" name="ffc-file-out" size="100" type="text"></pre>
-            </section>
-            
-		</section>			
-		
-		<section id="mkv-extra" class="seccion">
+                <input id="ffc-file-out" name="ffc-file-out" type="text" placeholder="Command" class="output-100">        
+        
+            </div>       
+                   
+        </div>                   
+                   
+            		
+		<div id="mkv-extra" class="seccion">
 		    <h2>MKV Subtitle Extract </h2>
-		</section>
+		</div>
 	</body>
 
 <script type="text/javascript">
@@ -82,9 +61,9 @@
         
 
 		//obtencion de punto inicial
-		hora_in =  document.getElementById("ffc-in-hour").value;
-		min_in  =  document.getElementById("ffc-in-min").value;
-		seg_in  =  document.getElementById("ffc-in-seg").value;
+		hora_in =  document.getElementById("ffc-ini-hour").value;
+		min_in  =  document.getElementById("ffc-ini-min").value;
+		seg_in  =  document.getElementById("ffc-ini-seg").value;
 
 		//obtencion de punto final 
 		hora_out =  document.getElementById("ffc-out-hour").value;
@@ -93,7 +72,7 @@
 
 
 		//comando plantilla
-		$template =  document.getElementById("ffc-template").innerText;
+		$template =  document.getElementById("ffc-template").value;
 
 		//nombre de archivo de entrada
 		$file_in =  document.getElementById("ffc-file-in").value;
@@ -122,15 +101,7 @@
         
 //        console.log("posicion -->" + $file_out ) ;
 
-
-		//var _ffc_in_min ; // nodo de hora de entrada
-
-		 //_ffc_file_out = document.getElementById("ffc-file-out");
-		 
-		 //Una Forma 
-/*		document.getElementById("ffc-file-out").innerText = "Desde " + segs_in + " Hasta " + segs_out ; */
-
-		document.getElementById("ffc-file-out").innerText = $command ; 
+		document.getElementById("ffc-file-out").value = $command ; 
 
 	}
 
